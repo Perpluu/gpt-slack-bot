@@ -12,20 +12,19 @@ load_dotenv()
 
 your_pinecone_api_key = os.environ.get('pinecone')
 your_openai_api_key = os.environ.get('openai')
-your_notional_api_key = os.environ.get('notion')
+your_notion_api_key = os.environ.get('notion')
 
 # Set up Pinecone client and index
-pinecone.init(api_key="your_pinecone_api_key")
+pinecone.init(api_key=your_pinecone_api_key)
 index = pinecone.Index(index_name="your_index_name")
 
-# Set up LangChain client
-langchain_client = langchain.Client(api_key="your_langchain_api_key")
+langchain_client = langchain.Client()
 
 # Set up ChatGPT client
-openai.api_key = "your_openai_api_key"
+openai.api_key = your_openai_api_key
 
 # Set up Notion client and database
-notion = notion_client.Client(auth="your_notion_auth_key")
+notion = notion_client.Client(auth=your_notion_api_key)
 database_id = "your_database_id"
 
 # Set up Slack bot and event listener
